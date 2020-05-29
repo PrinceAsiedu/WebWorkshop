@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Store home page</title>
+    <style>
+        header,
+        nav,
+        section,
+        footer {
+            background: #659494;
+            border-radius: 5px;
+            color: white;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 30px;
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 23px
+        }
+        header::before,
+        nav::before,
+        /* section::before, */
+        footer::before {
+            content: '<';
+        }
+        header::after,
+        nav::after,
+        /* section::after, */
+        footer::after {
+            content: '>';
+        }
+        
+        section {
+            overflow: hidden;
+        }
+        div {
+            float: left;
+            width: 25%;
+        }  
+        /* We can achieve the above float layout with the more
+        flexible flex-based and grid-based layout techniques
+        below.
+        
+        -------flex start-------
+        section {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        div {flex-basis: 25%;}
+        --------flex end----------
+
+        -------grid start---------
+        section {
+            display: grid;
+            grid-template-columns:auto auto;
+        }
+        -------grid end-----------
+        With the above we don't need to declare 'overflow: hidden'
+        as it is taken care of by flex
+         */
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <nav>nav</nav>
+    <section>
+        <div>product 1</div>
+        <div>product 2</div>
+        <div>product 3</div>
+        <div>product 4</div>
+        <div>product 5</div>
+        <div>product 6</div>
+        <div>product 7</div>
+        <div>product 8</div>
+    </section>
+    <footer>footer</footer>
+</body>
+</html>

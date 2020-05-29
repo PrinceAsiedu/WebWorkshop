@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+</head>
+<body>
+    <article>
+        <h1>CSS Selectors</h1>
+
+        <h3>Attribute Selectors</h3>
+        <p>
+            Attribute selectors let you select elements based on the presence of an attribute or<br>
+            based on the value of an attribute. The syntax is square brackets, [], with the suitable<br>
+            attribute inside. There are several variations that you can use to make matches:
+        </p>
+        <ul>
+            <li>[attribute] will select all elements with an attribute present; example, [href]</li>
+            <li>[attribute=value] will select all elements with an attribute with an exact value;example, [lang="en"]</li>
+            <li>[attribute^=value] will select all elements with an attribute with a value that begins with the matching value; for example, [href^="https://"]</li>
+            <li>[attribute$=value] will select elements with an attribute with a value that ends with the matching value; for example, [href$=".com"]</li>
+            <li>[attribute*=valule] will select elements with an attribute with a value that has a match somewhere in the string; for example, [href*="co.uk"]</li>
+        </ul>
+        <h3>Pseudo-classes</h3>
+        <p>
+            To select an element when it is in a particular state, we have several pseudo-classes <br>
+            defined. The syntax of a pseudo-class is a colon, :, followed by a keyword.
+        </p>
+        <ul>
+            <li>When an anchor element has an href attribute, it will have the :link pseudo class applied to it</li>
+            <li>When a user hovers over the link, the :hover pseudo-class is applied to it.</li>
+            <li>When the link has been visited, it has the :visited pseudo-class applied to it.</li>
+            <li>When the link is being clicked, it has the :active pseudo-class applied to it</li>
+            <li>:first-child</li>
+            <li>:last-child</li>
+            <li>:nth-child</li> 
+            <li>:nth-last-child</li>
+            <li>:first-of-type</li>
+            <li>:last-of-type</li> 
+            <li>:nth-of-type</li>
+            <li>:nth-last-of-type.</li>
+        </ul>
+        <h3>Pseudo-elements</h3>
+        <p>
+            Pseudo-element selectors are preceded by two colons (::) and they are used to select
+            part of an element. The available pseudo-elements include 
+        </p>
+        <ul>
+            <li>::after</li>
+            <li>::before</li>
+            <li>::firstletter</li>
+            <li>::first-line</li>
+            <li>::selection</li>
+            <li>::backdrop.</li>
+        </ul>
+    </article>
+</body>
+</html>
