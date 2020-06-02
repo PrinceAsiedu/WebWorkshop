@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Video store home page.">
+    <title>Video Store Home Page - Chapter 2</title>
+
+    <style type="text/css">
+        header,
+        nav,
+        article,
+        aside,
+        footer {
+            background: gray;
+            border-radius: 5px;
+            color: white;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 30px;
+            text-align: center;
+            /* border: 1px solid teal; */
+            padding: 30px;
+            margin-bottom: 23px;
+        }
+
+        header::before,
+        nav::before,
+        article::before,
+        aside::before,
+        footer::before {
+         content: '<';   
+        }
+
+        header::after,
+        nav::after,
+        article::after,
+        aside::after,
+        footer::after {
+            content: '/>';
+        }
+        
+        article {
+            float: left;
+            margin-right: 20px;
+            width: 60%;
+        }
+
+        aside {
+            float: left;
+            width: calc(40% - 140px);
+        }
+         footer {
+            clear: both;
+        }
+        .site-wrapper {
+            margin: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-wrapper">
+        <header>header</header>
+        <nav>nav</nav>
+        <article>article</article>
+        <aside>aside</aside>
+        <footer>footer</footer>
+    </div> 
+</body>
+</html>

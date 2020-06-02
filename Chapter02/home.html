@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hayden's online clothe shop.">
+    <title>Hayden's online clothe shop.</title>
+    <style type="text/css">
+        header, nav, section, footer, .carousel {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            background: teal;
+            color: whitesmoke;
+            border-radius: 5px;
+            padding: 30px;
+            margin: 25px;
+            text-align: center;
+        }
+
+        header::before, nav::before, footer::before {
+            content: '<';
+        }
+
+        header::after, nav::after, footer::after {
+            content: '>';
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+
+        section div {
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid whitesmoke;
+        }
+
+        .site-wrapper {
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-wrapper">
+        <header>header</header>
+        <nav>nav</nav>
+        <div class="carousel">Image carousel</div>
+        <section>
+            <div>product 1</div>
+            <div>product 2</div>
+            <div>product 3</div>
+            <div>product 4</div>
+        </section>
+        <footer>footer</footer>
+    </div>
+</body>
+</html>

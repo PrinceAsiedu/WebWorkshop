@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Video Store Product Page.">
+    <title>Video Store Product Page - Chapter 2</title>
+    <style type="text/css">
+        header, nav, section, footer {
+            background-color: teal;
+            border-radius: 5px;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 30px;
+            text-align: center;
+            border: 1px solid gray;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        header::before, footer::before {
+            content: '</';
+        }
+
+        header::after, footer::after {
+            content: '>';
+        }
+        
+        section, nav {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+
+        section div {
+            border: 2px solid white;
+            padding: 30px;
+            margin: 10px;
+        }
+        
+        nav {
+            background-color: gray;
+            margin: 35px;
+        }
+        nav a {
+            border: 0 none teal;
+            padding: 2px;
+            margin: 4px;
+            color: whitesmoke;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-wrapper">
+        <header>header</header>
+        <nav>
+            <a href="product.html">Home</a>
+            <a href="./setup.jpg">Setup</a>
+            <a href="">More</a>
+            <a href="">About Us</a>
+        </nav>
+        <section>
+            <div>Product </div>
+            <div>Product </div>
+            <div>Product </div>
+            <div>Product </div>
+            <div>Product </div>
+            <div>Product </div>
+            <div>Product </div>
+            <div>Product </div>
+        </section>
+        <footer>footer</footer>
+    </div>
+</body>
+</html>
