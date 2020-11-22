@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling Controls</title>
+    <style>
+
+        [data-state='playing'] #play-btn,
+        [data-state='paused'] #pause-btn {
+            display: none;
+        }
+        
+        .audio-player,
+        .audio-controls, 
+        .audio-controls .button{
+            color: #0099cc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+        }
+        .audio-controls {
+            align-items: center;
+            background-color: white;
+            border: 3px solid #e7dfdd;
+            border-radius: 30px;
+            box-shadow: 1px 3px 6px dodgerblue;
+            display: flex;
+            justify-content: space-between;
+            max-width: 480px;
+            padding: 8px;
+            
+        }
+        
+        .audio-controls .button {
+            background: transparent;
+            /* border: 1px solid #0099cc; */
+            border: none;
+            border-radius: 30px;
+            padding: 5px 10px;
+            text-align: center;
+            /* margin: 4px 2px; */
+            -webkit-transition-duration: 0.6s;
+            transition-duration: 0.6s;
+            cursor: pointer;
+            width: 100px;
+        }
+
+        /* button on hover */
+        .audio-controls .button:hover {
+            background: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+            background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+            background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+            background-image: -o-linear-gradient(top, #3498db, #2980b9);
+            background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            -webkit-border-radius: 28;
+            border-radius: 28px;
+            -webkit-box-shadow: 0px 1px 3px #1e8fff;
+            -mox-box-shadow: 0px 1px 3px #1e8fff;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="audio-player" class="audio-player">
+        <audio src="song.mp3" id="audio-1">
+            Your browser does not support the HTML5 <code>audio</code> element.
+        </audio>
+        <div class="audio-controls">
+            <button class="button" id="play-btn">Play</button>
+            <button class="button" id="pause-btn">Pause</button>
+            <div class="audio-status">
+                <span id="played">00:00</span> / <span id="duration">00:00</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const audio1 = document.getElementById('audio-1');
+        const playButton = document.getElementById('play-btn');
+        const pauseButton = document.getElementById('pause-btn');
+        const duration = document.getElementById('duration')
+        const played = document.getElementById('played');
+
+        audioPlayer.dataset.state = 'paused';
+
+        playButton.addEventListener('click', function () {
+            if (audioPlayer.dataset.state === 'paused') {
+                audio1.play();
+                audioPlayer.dataset.state = 'playing';
+            }
+        });
+
+        pauseButton.addEventListener('click', function () {
+            if (audioPlayer.dataset.state === 'playing') {
+                audio1.pause()
+                audioPlayer.dataset.state = 'paused';
+            }
+        });
+
+        audio1.addEventListener('loadedmetadata', function () {
+            duration.textContent = formatTime(audio1.duration);
+        });
+
+        audio1.addEventListener('timeupdate', function () {
+            played.textContent = formatTime(audio1.currentTime);
+        });
+
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.round(time) % 60;
+            return `${minutes < 10 ? '0' + minutes : minutes
+                }:${seconds < 10 ? '0' + seconds : seconds
+                }`;
+
+        }
+    </script>
+</body>
+</html>
