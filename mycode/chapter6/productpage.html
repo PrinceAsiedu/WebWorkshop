@@ -127,13 +127,18 @@
         .intro p {
             line-height: 1.5;
         }
-
+        
         .product-card {
             display: inline-block;
-            border: 1px solid black;
+            border: 1px solid gray;
             padding: 15px;
             margin: 10px;
             height: 300px;
+            border-radius: 5px;
+        }
+
+        .product-card:hover {
+            box-shadow: 1px 0 5px gray ;
         }
         
         .product-card h2 {
@@ -186,12 +191,71 @@
             color: white;
             box-shadow: 0 0 10px 0 black;
         }
+        [data-state='playing'] #play-btn,
+        [data-state='paused'] #pause-btn {
+            display: none;
+        }
+        
+        .audio-player,
+        .audio-controls, 
+        .audio-controls .button{
+            color: #0099cc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+        }
+        .audio-controls {
+            align-items: center;
+            background-color: white;
+            border: 3px solid gainsboro;
+            border-radius: 30px;
+            box-shadow: 1px 3px 6px dodgerblue;
+            display: flex;
+            justify-content: space-between;
+            max-width: 360px;
+            padding: 8px;
+            
+        }
+        
+
+        /* button on hover */
+        .audio-controls .button {
+            background: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+            background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+            background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+            background-image: -o-linear-gradient(top, #3498db, #2980b9);
+            background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            -webkit-border-radius: 28;
+            -webkit-box-shadow: 0px 1px 3px #1e8fff;
+            -mox-box-shadow: 0px 1px 3px #1e8fff;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #1e8fff;
+            box-shadow: 1px 1px 5px ;
+            border-radius: 30px;
+            padding: 5px 10px;
+            text-align: center;
+            width: 100px;
+             -webkit-transition-duration: 0.6s;
+            transition-duration: 0.6s;
+            cursor: pointer;
+        }
+        
+        .audio-controls .button:hover {
+            background: transparent;
+            color: #1e8fff;
+        }
+
+        .audio-player {
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <!-- <img src="https://dummyimage.com/200x100/000/fff&text=Logo" alt="" /> -->
-        <img src="Logo.png" alt="">
+        <img src="https://dummyimage.com/200x100/000/fff&text=Logo" alt="" />
+        <!-- <img src="Logo.png" alt=""> -->
         <!-- navigation will go here -->
         <nav>
             <ul>
@@ -213,8 +277,60 @@
     <!-- introduction will go here -->
     <div class="intro">  
         <h1>Videos less than £10</h1>
-        <audio src="song.mp3" autoplay controls preload="metadata" loop>Here's a song for the weekend vibe!!!</audio>
+        
+        <div id="audio-player" class="audio-player">
+            <audio src="song.mp3" id="audio-1">
+                Your browser does not support the HTML5 <code>audio</code> element.
+            </audio>
+            <div class="audio-controls">
+                <button class="button" id="play-btn">Play</button>
+                <button class="button" id="pause-btn">Pause</button>
+                <div class="audio-status">
+                    <span id="played">00:00</span> / <span id="duration">00:00</span>
+                </div>
+            </div>
+        </div>
+        <script>
+            const audioPlayer = document.getElementById('audio-player');
+            const audio1 = document.getElementById('audio-1');
+            const playButton = document.getElementById('play-btn');
+            const pauseButton = document.getElementById('pause-btn');
+            const duration = document.getElementById('duration')
+            const played = document.getElementById('played');
 
+            audioPlayer.dataset.state = 'paused';
+
+            playButton.addEventListener('click', function () {
+                if (audioPlayer.dataset.state === 'paused') {
+                    audio1.play();
+                    audioPlayer.dataset.state = 'playing';
+                }
+            });
+
+            pauseButton.addEventListener('click', function () {
+                if (audioPlayer.dataset.state === 'playing') {
+                    audio1.pause()
+                    audioPlayer.dataset.state = 'paused';
+                }
+            });
+
+            audio1.addEventListener('loadedmetadata', function () {
+                duration.textContent = formatTime(audio1.duration);
+            });
+
+            audio1.addEventListener('timeupdate', function () {
+                played.textContent = formatTime(audio1.currentTime);
+            });
+
+            function formatTime(time) {
+                const minutes = Math.floor(time / 60);
+                const seconds = Math.round(time) % 60;
+                return `${minutes < 10 ? '0' + minutes : minutes
+                    }:${seconds < 10 ? '0' + seconds : seconds
+                    }`;
+
+            }
+        </script>
             <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Similique asperiores laudantium enim minus ullam, soluta
